@@ -9,4 +9,12 @@
         padding: 0.5rem;
         border-radius: 0.4rem;
     }
+
+    .linkContainer {
+        margin: auto;
+        width: 40%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }

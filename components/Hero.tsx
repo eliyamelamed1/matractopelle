@@ -5,8 +5,6 @@ import React from 'react';
 import { pageRoutes } from '../utils/enum';
 
 const Hero = () => {
-    console.log(PhoneInTalkIcon);
-
     return (
         <div className='hero'>
             <section className='heroSection'>
@@ -17,18 +15,18 @@ const Hero = () => {
                     faut pour vous établir un devis sur mesure.
                 </p>
                 <div className='heroDetails'>
-                    <a className='link'>
-                        <Link href={pageRoutes.contact}>Obtenir un devis en ligne</Link>
-                    </a>
+                    <Link href={pageRoutes.contact} passHref>
+                        <a className='link'>Obtenir un devis en ligne</a>
+                    </Link>
 
-                    <a className='phone'>
-                        <Link href={pageRoutes.contact} passHref>
+                    <Link href={pageRoutes.contact} passHref>
+                        <a className='phone'>
                             <div className='phoneData'>
                                 <PhoneInTalkIcon />
                                 06 95 89 29 32
                             </div>
-                        </Link>
-                    </a>
+                        </a>
+                    </Link>
                 </div>
             </section>
         </div>

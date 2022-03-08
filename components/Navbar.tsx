@@ -1,10 +1,12 @@
 import * as React from 'react';
 
+import AgricultureIcon from '@mui/icons-material/Agriculture';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
+import Link from 'next/link';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -71,39 +73,52 @@ const Navbar = () => {
                                 </MenuItem>
                             ))}
                         </Menu>
+                        <div
+                            style={{
+                                margin: 'auto',
+                                display: 'flex',
+                                gap: '0.5rem',
+                            }}
+                        >
+                            <AgricultureIcon />
+                            Tractors.fr
+                        </div>
                     </Box>
-                    <Typography
-                        variant='h6'
-                        noWrap
-                        component='div'
-                        sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-                        className='link'
-                    >
-                        LOGO
-                    </Typography>
+
                     <Box
                         sx={{
                             alignItems: 'center',
-                            justifyContent: 'space-evenly',
                             flexGrow: 1,
                             display: { xs: 'none', md: 'flex' },
                         }}
                     >
-                        {pages.map((page) => (
-                            <a
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                className={
-                                    (router.pathname === page ? 'active' : '',
-                                    router.pathname === '/' && page === 'Home' ? 'active' : '')
-                                }
-                                href={pageRoutes[page]}
-                            >
-                                {page}
-                            </a>
-                        ))}
-                    </Box>
+                        <div
+                            style={{
+                                display: 'flex',
+                                gap: '0.5rem',
+                            }}
+                        >
+                            <AgricultureIcon />
+                            Tractors.fr
+                        </div>
 
+                        <div className='linkContainer'>
+                            {pages.map((page) => (
+                                <Link key={page} href={pageRoutes[page]} passHref>
+                                    <a
+                                        onClick={handleCloseNavMenu}
+                                        className={
+                                            (router.pathname === '/' && page === 'home') || router.pathname === page
+                                                ? 'active'
+                                                : ''
+                                        }
+                                    >
+                                        {page}
+                                    </a>
+                                </Link>
+                            ))}
+                        </div>
+                    </Box>
                     <Box sx={{ flexGrow: 0 }}>
                         <Menu
                             sx={{ mt: '45px' }}
