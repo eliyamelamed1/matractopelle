@@ -10,9 +10,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { pageRoutes } from '../utils/enum';
 import { useRouter } from 'next/router';
 
-const pages = ['Home', 'Areas', 'Contact'];
+const pages = ['home', 'areas', 'contact'];
 
 const Navbar = () => {
     const router = useRouter();
@@ -94,8 +95,9 @@ const Navbar = () => {
                                 onClick={handleCloseNavMenu}
                                 className={
                                     (router.pathname === page ? 'active' : '',
-                                    router.pathname === '/' && page === 'Home' ? 'active' : null)
+                                    router.pathname === '/' && page === 'Home' ? 'active' : '')
                                 }
+                                href={pageRoutes[page]}
                             >
                                 {page}
                             </a>

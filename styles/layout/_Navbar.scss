@@ -1,6 +1,8 @@
 .navbar {
     background-color: $primary-color;
-
+    a {
+        text-transform: capitalize;
+    }
     .active {
         background-color: white;
         color: black;
