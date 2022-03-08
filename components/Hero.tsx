@@ -31,11 +31,9 @@ const Hero = () => {
                         </Link>
 
                         <Link href={pageRoutes.contact} passHref>
-                            <a className='phone'>
-                                <div className='phoneData'>
-                                    <PhoneInTalkIcon />
-                                    06 95 89 29 32
-                                </div>
+                            <a className='phoneData'>
+                                <PhoneInTalkIcon />
+                                06 95 89 29 32
                             </a>
                         </Link>
                     </div>
