@@ -1,10 +1,6 @@
-import Avatar from '@mui/material/Avatar';
 import FirstImage from '../assets/info1.jpg';
-import Minipelle from '../assets/minipelle.jpg';
-import Pelle from '../assets/pelle.jpg';
 import React from 'react';
 import SecondImage from '../assets/info2.jpg';
-import Tractopelle from '../assets/tractopelle.jpg';
 
 const paragraphs = (
     <>
@@ -44,47 +40,8 @@ const paragraphs = (
     </>
 );
 
-const itemBubbles = (
-    <>
-        <section>
-            <div className='bubbles'>
-                <>
-                    <Avatar src={Minipelle.src} className='avatar' />
-                    <h2>Minipelle</h2>
-                </>
-                <p>
-                    La grue automotrice fait aussi partie de la large gamme des grues de chantier que nous mettons à la
-                    location dans notre parc d’engins de levage et de manutention.
-                </p>
-            </div>
-            <div className='bubbles'>
-                <>
-                    <Avatar src={Pelle.src} className='avatar' />
-                    <h2>Pelle</h2>
-                </>
-                <p>
-                    La grue sur remorque est idéale pour tous les travaux de levage et du transport en vous garantissant
-                    la sécurité de toutes vos marchandises.
-                </p>
-            </div>
-            <div className='bubbles'>
-                <>
-                    <Avatar src={Tractopelle.src} className='avatar' />
-                    <h2>Tractopelle</h2>
-                </>
-                <p>La grue mobile peut aussi être appelée : camion grue, grue sur porteur, grue sur roues.</p>
-            </div>
-        </section>
-    </>
-);
-
 const Info = () => {
-    return (
-        <div className='info'>
-            {paragraphs}
-            {itemBubbles}
-        </div>
-    );
+    return <div className='info'>{paragraphs}</div>;
 };
 
 export default Info;
