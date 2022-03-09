@@ -26,14 +26,14 @@ const Hero = () => {
                     </p>
                     <div className='heroDetails'>
                         <Link href={pageRoutes.contact} passHref>
-                            <a className='link'>Obtenir un devis en ligne</a>
+                            <span className='link'>Obtenir un devis en ligne</span>
                         </Link>
 
                         <Link href={pageRoutes.contact} passHref>
-                            <a className='phoneData'>
+                            <span className='phoneData'>
                                 <PhoneInTalkIcon />
                                 06 95 89 29 32
-                            </a>
+                            </span>
                         </Link>
                     </div>
                 </section>
