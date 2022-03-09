@@ -1,0 +1,39 @@
+.info {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    row-gap: 7rem;
+    section {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        row-gap: 2rem;
+    }
+
+    div {
+        h1 {
+            font-weight: 700;
+            span {
+                color: $primary-color;
+            }
+            margin-bottom: 1rem;
+        }
+        p {
+            font-weight: 400;
+            letter-spacing: 1px;
+            max-width: 60ch;
+            font-size: 1.1rem;
+            span {
+                color: black;
+                font-weight: 600;
+            }
+        }
+    }
+    .image {
+        width: 20rem;
+    }
+}

@@ -10,6 +10,9 @@
     flex-direction: column;
     gap: 6rem;
 
+    .title {
+        color: $primary-color;
+    }
     .heroContainer {
         color: white;
         justify-content: center;
