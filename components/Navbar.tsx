@@ -69,7 +69,18 @@ const Navbar = () => {
                         >
                             {pages.map((page) => (
                                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign='center'>{page}</Typography>
+                                    <Link key={page} href={pageRoutes[page]} passHref>
+                                        <a
+                                            onClick={handleCloseNavMenu}
+                                            style={{
+                                                color: 'black',
+                                                textTransform: 'capitalize',
+                                            }}
+                                            className={router.pathname === pageRoutes[page] ? 'active' : ''}
+                                        >
+                                            {page}
+                                        </a>
+                                    </Link>
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -107,11 +118,7 @@ const Navbar = () => {
                                 <Link key={page} href={pageRoutes[page]} passHref>
                                     <a
                                         onClick={handleCloseNavMenu}
-                                        className={
-                                            (router.pathname === '/' && page === 'home') || router.pathname === page
-                                                ? 'active'
-                                                : ''
-                                        }
+                                        className={router.pathname === pageRoutes[page] ? 'active' : ''}
                                     >
                                         {page}
                                     </a>
