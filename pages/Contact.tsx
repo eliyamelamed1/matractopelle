@@ -44,10 +44,13 @@ const Contact = () => {
     const onChange = (e) => setFormData((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
     const onSubmit = (e) => {
         e.preventDefault();
+        // call send email api
+        console.log('asdasd');
     };
+
     return (
         <div className='contact'>
-            <FormControl className='form'>
+            <FormControl className='form' onSubmit={onSubmit}>
                 <h1>Obtenez un devis</h1>
                 <h5>PARLEZ-NOUS DE VOS BESOINS, RÉPONSE IMMÉDIATE</h5>
                 <TextField
@@ -95,13 +98,20 @@ const Contact = () => {
                     size='small'
                     onChange={onChange}
                 />
-                {/* <TextField select label='Type de grue souhaité' helperText='' variant='standard'>
+                <TextField
+                    select
+                    label='Type de grue souhaité'
+                    helperText=''
+                    variant='standard'
+                    name='item'
+                    onChange={onChange}
+                >
                     {currencies.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
                             {option.label}
                         </MenuItem>
                     ))}
-                </TextField> */}
+                </TextField>
                 <TextField
                     label='Message'
                     variant='standard'
@@ -110,7 +120,7 @@ const Contact = () => {
                     name='massage'
                     onChange={onChange}
                 />
-                <button>Envoyer</button>
+                <Button type='submit'>Envoyer</Button>
             </FormControl>
         </div>
     );
