@@ -8,7 +8,6 @@ const Home: NextPage = () => {
         <>
             <Info />
             <Items />
-            <Areas />
         </>
     );
 };

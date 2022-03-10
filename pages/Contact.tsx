@@ -1,7 +1,7 @@
 import { Button, FormControl, TextField } from '@mui/material';
+import React, { useState } from 'react';
 
 import MenuItem from '@mui/material/MenuItem';
-import React from 'react';
 
 const currencies = [
     {
@@ -18,59 +18,95 @@ const currencies = [
     },
 ];
 
+interface FormDataType {
+    name: string;
+    zipCode: string;
+    phone: string;
+    city: string;
+    item: string;
+    massage: string;
+    email: string;
+}
+
 const Contact = () => {
+    const [formData, setFormData] = useState<FormDataType>({
+        name: '',
+        zipCode: '',
+        phone: '',
+        city: '',
+        item: '',
+        massage: '',
+        email: '',
+    });
+
+    const { name, zipCode, email, phone, city, item, massage } = formData;
+
+    const onChange = (e) => setFormData((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
     return (
         <div className='contact'>
             <FormControl className='form'>
                 <h1>Obtenez un devis</h1>
                 <h5>PARLEZ-NOUS DE VOS BESOINS, RÉPONSE IMMÉDIATE</h5>
                 <TextField
-                    id='Nom/Prénom'
                     label='Nom/Prénom'
+                    name='name'
+                    onChange={onChange}
+                    className='input'
+                    variant='standard'
+                    size='small'
+                    required
+                />
+                <TextField
+                    label='Email'
+                    name='email'
+                    onChange={onChange}
                     required
                     className='input'
                     variant='standard'
                     size='small'
                 />
-                <TextField id='Email' label='Email' required className='input' variant='standard' size='small' />
                 <TextField
-                    id='Code postal'
                     label='Code postal'
                     required
+                    name='zipCode'
                     className='input'
                     variant='standard'
                     size='small'
+                    onChange={onChange}
                 />
                 <TextField
-                    id='Téléphone'
                     label='Téléphone'
+                    name='phone'
                     required
                     className='input'
                     variant='standard'
                     size='small'
+                    onChange={onChange}
                 />
                 <TextField
-                    id='Votre ville'
                     label='Votre ville'
+                    name='city'
                     required
                     className='input'
                     variant='standard'
                     size='small'
+                    onChange={onChange}
                 />
-                <TextField
-                    id='standard-select-currency'
-                    select
-                    label='Type de grue souhaité'
-                    helperText=''
-                    variant='standard'
-                >
+                {/* <TextField select label='Type de grue souhaité' helperText='' variant='standard'>
                     {currencies.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
                             {option.label}
                         </MenuItem>
                     ))}
-                </TextField>
-                <TextField id='Message' label='Message' variant='standard' multiline size='small' />
+                </TextField> */}
+                <TextField
+                    label='Message'
+                    variant='standard'
+                    multiline
+                    size='small'
+                    name='massage'
+                    onChange={onChange}
+                />
                 <button>Envoyer</button>
             </FormControl>
         </div>
