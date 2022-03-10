@@ -7,7 +7,6 @@ const Layout = ({ children }) => {
     return (
         <>
             <ToastContainer position='top-right' autoClose={5000} newestOnTop={false} pauseOnFocusLoss={false} />
-
             <Hero />
             {children}
             <Footer />

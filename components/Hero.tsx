@@ -1,7 +1,8 @@
+import React, { useRef } from 'react';
+
 import Link from 'next/link';
 import Navbar from './Navbar';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
-import React from 'react';
 import { pageRoutes } from '../utils/enum';
 
 const Hero = () => {

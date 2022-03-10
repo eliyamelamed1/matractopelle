@@ -88,7 +88,7 @@ const Navbar = () => {
                     <Box
                         sx={{
                             alignItems: 'center',
-                            flexGrow: 1,
+                            flexGrow: 0.8,
                             display: { xs: 'none', md: 'flex' },
                         }}
                     >
@@ -119,6 +119,7 @@ const Navbar = () => {
                             ))}
                         </div>
                     </Box>
+
                     <Box sx={{ flexGrow: 0 }}>
                         <Menu
                             sx={{ mt: '45px' }}
