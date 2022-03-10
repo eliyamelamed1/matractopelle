@@ -42,6 +42,9 @@ const Contact = () => {
     const { name, zipCode, email, phone, city, item, massage } = formData;
 
     const onChange = (e) => setFormData((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
+    const onSubmit = (e) => {
+        e.preventDefault();
+    };
     return (
         <div className='contact'>
             <FormControl className='form'>

@@ -1,0 +1,45 @@
+.customers {
+    background-image: url('../../assets/customerBackground.jpg');
+    box-shadow: inset 0 0 0 1000px rgba(230, 230, 230, 0.9);
+    background-position: 50% 80%; /* Center the image */
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+    align-items: center;
+    gap: 2rem;
+    .primaryColor {
+        color: $primary-color;
+    }
+    .paragraph {
+        text-align: center;
+        letter-spacing: 1px;
+        max-width: 100ch;
+    }
+
+    .clientContainer {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+        .clientNameAndRole {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .clientName {
+            font-weight: 700;
+        }
+        .clientRole {
+            color: gray;
+            font-weight: 600;
+        }
+        .avatar {
+            width: 4rem;
+            height: 4rem;
+        }
+    }
+}
