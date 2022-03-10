@@ -2,6 +2,7 @@ import { Button, FormControl, TextField } from '@mui/material';
 import React, { useState } from 'react';
 
 import MenuItem from '@mui/material/MenuItem';
+import { toast } from 'react-toastify';
 
 const currencies = [
     {
@@ -44,13 +45,15 @@ const Contact = () => {
     const onChange = (e) => setFormData((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
     const onSubmit = (e) => {
         e.preventDefault();
+        for (const val of Object.values(formData)) {
+            if (val === '') return toast.error('Please fill all the inputs');
+        }
         // call send email api
-        console.log('asdasd');
     };
 
     return (
         <div className='contact'>
-            <FormControl className='form' onSubmit={onSubmit}>
+            <FormControl className='form'>
                 <h1>Obtenez un devis</h1>
                 <h5>PARLEZ-NOUS DE VOS BESOINS, RÉPONSE IMMÉDIATE</h5>
                 <TextField
@@ -60,20 +63,17 @@ const Contact = () => {
                     className='input'
                     variant='standard'
                     size='small'
-                    required
                 />
                 <TextField
                     label='Email'
                     name='email'
                     onChange={onChange}
-                    required
                     className='input'
                     variant='standard'
                     size='small'
                 />
                 <TextField
                     label='Code postal'
-                    required
                     name='zipCode'
                     className='input'
                     variant='standard'
@@ -83,7 +83,6 @@ const Contact = () => {
                 <TextField
                     label='Téléphone'
                     name='phone'
-                    required
                     className='input'
                     variant='standard'
                     size='small'
@@ -92,7 +91,6 @@ const Contact = () => {
                 <TextField
                     label='Votre ville'
                     name='city'
-                    required
                     className='input'
                     variant='standard'
                     size='small'
@@ -120,7 +118,7 @@ const Contact = () => {
                     name='massage'
                     onChange={onChange}
                 />
-                <Button type='submit'>Envoyer</Button>
+                <Button onClick={onSubmit}>Envoyer</Button>
             </FormControl>
         </div>
     );
