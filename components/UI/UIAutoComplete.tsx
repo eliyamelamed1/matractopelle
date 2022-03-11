@@ -1,147 +1,181 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
 const top100Films = [
-    { label: 'The Shawshank Redemption', year: 1994 },
-    { label: 'The Godfather', year: 1972 },
-    { label: 'The Godfather: Part II', year: 1974 },
-    { label: 'The Dark Knight', year: 2008 },
-    { label: '12 Angry Men', year: 1957 },
-    { label: "Schindler's List", year: 1993 },
-    { label: 'Pulp Fiction', year: 1994 },
+    { title: 'The Shawshank Redemption', link: 1994 },
+    { title: 'The Godfather', link: 1972 },
+    { title: 'The Godfather: Part II', link: 1974 },
+    { title: 'The Dark Knight', link: 2008 },
+    { title: '12 Angry Men', link: 1957 },
+    { title: "Schindler's List", link: 1993 },
+    { title: 'Pulp Fiction', link: 1994 },
     {
-        label: 'The Lord of the Rings: The Return of the King',
-        year: 2003,
+        title: 'The Lord of the Rings: The Return of the King',
+        link: 2003,
     },
-    { label: 'The Good, the Bad and the Ugly', year: 1966 },
-    { label: 'Fight Club', year: 1999 },
+    { title: 'The Good, the Bad and the Ugly', link: 1966 },
+    { title: 'Fight Club', link: 1999 },
     {
-        label: 'The Lord of the Rings: The Fellowship of the Ring',
-        year: 2001,
+        title: 'The Lord of the Rings: The Fellowship of the Ring',
+        link: 2001,
     },
     {
-        label: 'Star Wars: Episode V - The Empire Strikes Back',
-        year: 1980,
+        title: 'Star Wars: Episode V - The Empire Strikes Back',
+        link: 1980,
     },
-    { label: 'Forrest Gump', year: 1994 },
-    { label: 'Inception', year: 2010 },
+    { title: 'Forrest Gump', link: 1994 },
+    { title: 'Inception', link: 2010 },
     {
-        label: 'The Lord of the Rings: The Two Towers',
-        year: 2002,
+        title: 'The Lord of the Rings: The Two Towers',
+        link: 2002,
     },
-    { label: "One Flew Over the Cuckoo's Nest", year: 1975 },
-    { label: 'Goodfellas', year: 1990 },
-    { label: 'The Matrix', year: 1999 },
-    { label: 'Seven Samurai', year: 1954 },
+    { title: "One Flew Over the Cuckoo's Nest", link: 1975 },
+    { title: 'Goodfellas', link: 1990 },
+    { title: 'The Matrix', link: 1999 },
+    { title: 'Seven Samurai', link: 1954 },
     {
-        label: 'Star Wars: Episode IV - A New Hope',
-        year: 1977,
+        title: 'Star Wars: Episode IV - A New Hope',
+        link: 1977,
     },
-    { label: 'City of God', year: 2002 },
-    { label: 'Se7en', year: 1995 },
-    { label: 'The Silence of the Lambs', year: 1991 },
-    { label: "It's a Wonderful Life", year: 1946 },
-    { label: 'Life Is Beautiful', year: 1997 },
-    { label: 'The Usual Suspects', year: 1995 },
-    { label: 'Léon: The Professional', year: 1994 },
-    { label: 'Spirited Away', year: 2001 },
-    { label: 'Saving Private Ryan', year: 1998 },
-    { label: 'Once Upon a Time in the West', year: 1968 },
-    { label: 'American History X', year: 1998 },
-    { label: 'Interstellar', year: 2014 },
-    { label: 'Casablanca', year: 1942 },
-    { label: 'City Lights', year: 1931 },
-    { label: 'Psycho', year: 1960 },
-    { label: 'The Green Mile', year: 1999 },
-    { label: 'The Intouchables', year: 2011 },
-    { label: 'Modern Times', year: 1936 },
-    { label: 'Raiders of the Lost Ark', year: 1981 },
-    { label: 'Rear Window', year: 1954 },
-    { label: 'The Pianist', year: 2002 },
-    { label: 'The Departed', year: 2006 },
-    { label: 'Terminator 2: Judgment Day', year: 1991 },
-    { label: 'Back to the Future', year: 1985 },
-    { label: 'Whiplash', year: 2014 },
-    { label: 'Gladiator', year: 2000 },
-    { label: 'Memento', year: 2000 },
-    { label: 'The Prestige', year: 2006 },
-    { label: 'The Lion King', year: 1994 },
-    { label: 'Apocalypse Now', year: 1979 },
-    { label: 'Alien', year: 1979 },
-    { label: 'Sunset Boulevard', year: 1950 },
+    { title: 'City of God', link: 2002 },
+    { title: 'Se7en', link: 1995 },
+    { title: 'The Silence of the Lambs', link: 1991 },
+    { title: "It's a Wonderful Life", link: 1946 },
+    { title: 'Life Is Beautiful', link: 1997 },
+    { title: 'The Usual Suspects', link: 1995 },
+    { title: 'Léon: The Professional', link: 1994 },
+    { title: 'Spirited Away', link: 2001 },
+    { title: 'Saving Private Ryan', link: 1998 },
+    { title: 'Once Upon a Time in the West', link: 1968 },
+    { title: 'American History X', link: 1998 },
+    { title: 'Interstellar', link: 2014 },
+    { title: 'Casablanca', link: 1942 },
+    { title: 'City Lights', link: 1931 },
+    { title: 'Psycho', link: 1960 },
+    { title: 'The Green Mile', link: 1999 },
+    { title: 'The Intouchables', link: 2011 },
+    { title: 'Modern Times', link: 1936 },
+    { title: 'Raiders of the Lost Ark', link: 1981 },
+    { title: 'Rear Window', link: 1954 },
+    { title: 'The Pianist', link: 2002 },
+    { title: 'The Departed', link: 2006 },
+    { title: 'Terminator 2: Judgment Day', link: 1991 },
+    { title: 'Back to the Future', link: 1985 },
+    { title: 'Whiplash', link: 2014 },
+    { title: 'Gladiator', link: 2000 },
+    { title: 'Memento', link: 2000 },
+    { title: 'The Prestige', link: 2006 },
+    { title: 'The Lion King', link: 1994 },
+    { title: 'Apocalypse Now', link: 1979 },
+    { title: 'Alien', link: 1979 },
+    { title: 'Sunset Boulevard', link: 1950 },
     {
-        label: 'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb',
-        year: 1964,
+        title: 'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb',
+        link: 1964,
     },
-    { label: 'The Great Dictator', year: 1940 },
-    { label: 'Cinema Paradiso', year: 1988 },
-    { label: 'The Lives of Others', year: 2006 },
-    { label: 'Grave of the Fireflies', year: 1988 },
-    { label: 'Paths of Glory', year: 1957 },
-    { label: 'Django Unchained', year: 2012 },
-    { label: 'The Shining', year: 1980 },
-    { label: 'WALL·E', year: 2008 },
-    { label: 'American Beauty', year: 1999 },
-    { label: 'The Dark Knight Rises', year: 2012 },
-    { label: 'Princess Mononoke', year: 1997 },
-    { label: 'Aliens', year: 1986 },
-    { label: 'Oldboy', year: 2003 },
-    { label: 'Once Upon a Time in America', year: 1984 },
-    { label: 'Witness for the Prosecution', year: 1957 },
-    { label: 'Das Boot', year: 1981 },
-    { label: 'Citizen Kane', year: 1941 },
-    { label: 'North by Northwest', year: 1959 },
-    { label: 'Vertigo', year: 1958 },
+    { title: 'The Great Dictator', link: 1940 },
+    { title: 'Cinema Paradiso', link: 1988 },
+    { title: 'The Lives of Others', link: 2006 },
+    { title: 'Grave of the Fireflies', link: 1988 },
+    { title: 'Paths of Glory', link: 1957 },
+    { title: 'Django Unchained', link: 2012 },
+    { title: 'The Shining', link: 1980 },
+    { title: 'WALL·E', link: 2008 },
+    { title: 'American Beauty', link: 1999 },
+    { title: 'The Dark Knight Rises', link: 2012 },
+    { title: 'Princess Mononoke', link: 1997 },
+    { title: 'Aliens', link: 1986 },
+    { title: 'Oldboy', link: 2003 },
+    { title: 'Once Upon a Time in America', link: 1984 },
+    { title: 'Witness for the Prosecution', link: 1957 },
+    { title: 'Das Boot', link: 1981 },
+    { title: 'Citizen Kane', link: 1941 },
+    { title: 'North by Northwest', link: 1959 },
+    { title: 'Vertigo', link: 1958 },
     {
-        label: 'Star Wars: Episode VI - Return of the Jedi',
-        year: 1983,
+        title: 'Star Wars: Episode VI - Return of the Jedi',
+        link: 1983,
     },
-    { label: 'Reservoir Dogs', year: 1992 },
-    { label: 'Braveheart', year: 1995 },
-    { label: 'M', year: 1931 },
-    { label: 'Requiem for a Dream', year: 2000 },
-    { label: 'Amélie', year: 2001 },
-    { label: 'A Clockwork Orange', year: 1971 },
-    { label: 'Like Stars on Earth', year: 2007 },
-    { label: 'Taxi Driver', year: 1976 },
-    { label: 'Lawrence of Arabia', year: 1962 },
-    { label: 'Double Indemnity', year: 1944 },
+    { title: 'Reservoir Dogs', link: 1992 },
+    { title: 'Braveheart', link: 1995 },
+    { title: 'M', link: 1931 },
+    { title: 'Requiem for a Dream', link: 2000 },
+    { title: 'Amélie', link: 2001 },
+    { title: 'A Clockwork Orange', link: 1971 },
+    { title: 'Like Stars on Earth', link: 2007 },
+    { title: 'Taxi Driver', link: 1976 },
+    { title: 'Lawrence of Arabia', link: 1962 },
+    { title: 'Double Indemnity', link: 1944 },
     {
-        label: 'Eternal Sunshine of the Spotless Mind',
-        year: 2004,
+        title: 'Eternal Sunshine of the Spotless Mind',
+        link: 2004,
     },
-    { label: 'Amadeus', year: 1984 },
-    { label: 'To Kill a Mockingbird', year: 1962 },
-    { label: 'Toy Story 3', year: 2010 },
-    { label: 'Logan', year: 2017 },
-    { label: 'Full Metal Jacket', year: 1987 },
-    { label: 'Dangal', year: 2016 },
-    { label: 'The Sting', year: 1973 },
-    { label: '2001: A Space Odyssey', year: 1968 },
-    { label: "Singin' in the Rain", year: 1952 },
-    { label: 'Toy Story', year: 1995 },
-    { label: 'Bicycle Thieves', year: 1948 },
-    { label: 'The Kid', year: 1921 },
-    { label: 'Inglourious Basterds', year: 2009 },
-    { label: 'Snatch', year: 2000 },
-    { label: '3 Idiots', year: 2009 },
-    { label: 'Monty Python and the Holy Grail', year: 1975 },
+    { title: 'Amadeus', link: 1984 },
+    { title: 'To Kill a Mockingbird', link: 1962 },
+    { title: 'Toy Story 3', link: 2010 },
+    { title: 'Logan', link: 2017 },
+    { title: 'Full Metal Jacket', link: 1987 },
+    { title: 'Dangal', link: 2016 },
+    { title: 'The Sting', link: 1973 },
+    { title: '2001: A Space Odyssey', link: 1968 },
+    { title: "Singin' in the Rain", link: 1952 },
+    { title: 'Toy Story', link: 1995 },
+    { title: 'Bicycle Thieves', link: 1948 },
+    { title: 'The Kid', link: 1921 },
+    { title: 'Inglourious Basterds', link: 2009 },
+    { title: 'Snatch', link: 2000 },
+    { title: '3 Idiots', link: 2009 },
+    { title: 'Monty Python and the Holy Grail', link: 1975 },
 ];
 
+interface citiesType {
+    [key: string]: boolean;
+}
+const cities: citiesType = {
+    'Django Unchained': true,
+};
+
 const UIAutoComplete = () => {
+    const [city, setCity] = useState('');
+    const onChange = (e) => {
+        const { value } = e.target;
+        setCity(value);
+    };
+    const router = useRouter();
+    const onSubmit = () => {
+        if (cities[city]) return router.push(city);
+        return toast.error('Wrong city');
+    };
+
     return (
         <div className='uiAutoComplete'>
             <Autocomplete
-                disablePortal
-                className='box'
-                options={top100Films}
-                size='small'
-                sx={{ width: 200 }}
-                renderInput={(params) => <TextField {...params} placeholder='City' />}
+                sx={{ width: 300 }}
+                freeSolo
+                disableClearable
+                options={top100Films.map((option) => option.title)}
+                onSelect={onChange}
+                renderInput={(params) => (
+                    <TextField
+                        onChange={onChange}
+                        name='city'
+                        {...params}
+                        label='City'
+                        InputProps={{
+                            ...params.InputProps,
+                            type: 'search',
+                        }}
+                    />
+                )}
             />
+            <button onClick={onSubmit} className='button'>
+                Check If Available
+            </button>
         </div>
     );
 };

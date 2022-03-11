@@ -1,6 +1,12 @@
 .uiAutoComplete {
+    display: flex;
+    gap: 1rem;
     .box {
         background-color: white;
         border-radius: 0.25rem;
+    }
+    .button {
+        @include button;
+        border-radius: 5px;
     }
 }
