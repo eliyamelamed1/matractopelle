@@ -41,8 +41,6 @@ const Contact = () => {
         }
     };
 
-    console.log(form.current);
-
     return (
         <div className='contact'>
             <form className='form' ref={form} onSubmit={onSubmit}>
