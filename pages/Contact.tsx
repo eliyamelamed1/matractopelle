@@ -27,7 +27,7 @@ interface FormDataType {
     email: string;
 }
 
-const contact = () => {
+const Contact = () => {
     const form = useRef();
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -79,4 +79,4 @@ const contact = () => {
     );
 };
 
-export default contact;
+export default Contact;
