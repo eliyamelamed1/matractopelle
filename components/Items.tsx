@@ -33,7 +33,10 @@ const Items = () => {
                         <Avatar src={Tractopelle.src} className='avatar' />
                         <h2>Tractopelle</h2>
                     </>
-                    <p>The best backhoe loaders at the lowest prices. 24/7 professional support included.</p>
+                    <p>
+                        Les meilleures chargeuses-pelleteuses aux prix les plus bas. Assistance professionnelle 24h/24
+                        et 7j/7 incluse.
+                    </p>
                 </div>
             </section>
         </div>

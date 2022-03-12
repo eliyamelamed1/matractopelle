@@ -20,9 +20,9 @@ const Customers = () => {
                 FAITES COMME <span className='primaryColor'>NOS CLIENTS</span>
             </h1>
             <h3 className='paragraph'>
-                “Very good understanding of my request and proposal of a solution adapted to my needs, a powerful crane
-                in Moselle within a tight deadline. I dealt with very friendly people for the order and the tractopelle
-                driver as well. I recommend this company.”
+                “Très bonne compréhension de ma demande et proposition d'une solution adaptée à mes besoins, une grue
+                performante en Moselle dans un délai serré. J'ai eu affaire à des gens très sympathiques pour la
+                commande et la tractopelle chauffeur aussi. Je recommande cette entreprise.”
             </h3>
             {client}
         </div>

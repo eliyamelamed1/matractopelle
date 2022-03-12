@@ -33,8 +33,7 @@ const aboutUs = () => {
             <h1 className='title'>Qui Sommes-Nous ?</h1>
             <p>
                 notre société propose à ses clients professionnels et particuliers des services de transport et de
-                location de tracteurs. Pour cela, nous mettons à disposition, sur nos sites clients, des bennes de
-                toutes tailles et pour tous types de déchets.
+                location de tracteurs. De plus, notre société fournit une réponse rapide à nos clients.
             </p>
         </div>
     );
