@@ -30,12 +30,10 @@ const Hero = () => {
                             <a className='link'>Obtenir un devis en ligne</a>
                         </Link>
 
-                        <Link href={pageRoutes.contact} passHref>
-                            <a className='phoneData'>
-                                <PhoneInTalkIcon />
-                                06 95 89 29 32
-                            </a>
-                        </Link>
+                        <span className='phoneData'>
+                            <PhoneInTalkIcon />
+                            06 95 89 29 32
+                        </span>
                     </div>
                 </section>
             </section>
