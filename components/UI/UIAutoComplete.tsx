@@ -13,19 +13,17 @@ const UIAutoComplete = () => {
         setCity(value);
     };
     const router = useRouter();
+    const lowerCaseRegions = regions.map((region) => region.toLowerCase());
     const onSubmit = () => {
-        if (regions.includes(city)) return router.push(city);
-        return toast.error('Wrong city');
+        if (lowerCaseRegions.includes(city.toLowerCase())) return router.push(city.toLowerCase());
+        return toast.error('mauvaise région');
     };
 
     return (
         <div className='uiAutoComplete'>
             <Autocomplete
                 sx={{ width: 300 }}
-                freeSolo
-                disableClearable
                 options={regions.map((option) => option)}
-                onSelect={onChange}
                 renderInput={(params) => (
                     <TextField
                         onChange={onChange}

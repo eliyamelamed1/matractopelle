@@ -7,10 +7,12 @@ import { texts } from '../utils/texts';
 
 export async function getServerSideProps(context) {
     const region: string = context.params.region;
-    const isRegionExist = regions.includes(region);
+    const lowerCaseRegions = regions.map((region) => region.toLowerCase());
+    const lowerCaseRegion = region.toLowerCase();
+    const isRegionExist = lowerCaseRegions.includes(lowerCaseRegion);
 
     if (isRegionExist) {
-        return { props: { region } };
+        return { props: { lowerCaseRegion } };
     } else {
         return { notFound: true };
     }
