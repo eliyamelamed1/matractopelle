@@ -12,7 +12,7 @@ export async function getServerSideProps(context) {
     const isRegionExist = lowerCaseRegions.includes(lowerCaseRegion);
 
     if (isRegionExist) {
-        return { props: { lowerCaseRegion } };
+        return { props: { region } };
     } else {
         return { notFound: true };
     }
@@ -53,7 +53,7 @@ const generateSections = ({ region, company }: { region: string; company: string
 };
 
 const region: NextPage<{ region: string }> = ({ region }) => {
-    const company = 'company name';
+    const company = 'our company';
     const sections = generateSections({ region, company });
     return (
         <div className='region'>

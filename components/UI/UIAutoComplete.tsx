@@ -19,8 +19,6 @@ const UIAutoComplete = () => {
         return toast.error('mauvaise région');
     };
 
-    console.log(city);
-
     return (
         <div className='uiAutoComplete'>
             <Autocomplete
