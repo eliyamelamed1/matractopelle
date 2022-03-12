@@ -1,5 +1,4 @@
-import Contact from './contact';
-import Hero from '../components/Hero';
+import Customers from '../components/Customers';
 import Items from '../components/Items';
 import type { NextPage } from 'next';
 import React from 'react';
@@ -25,7 +24,7 @@ const generateSections = ({ region, company }: { region: string; company: string
     }
 
     const sections = (
-        <>
+        <div className='sections'>
             <section key={memo[0]}>
                 <h1>{texts({ region, company })[memo[0]].title}</h1>
                 <p>{texts({ region, company })[memo[0]].paragraph}</p>
@@ -45,7 +44,7 @@ const generateSections = ({ region, company }: { region: string; company: string
                 <h1>{texts({ region, company })[memo[3]].title}</h1>
                 <p>{texts({ region, company })[memo[3]].paragraph}</p>
             </section>
-        </>
+        </div>
     );
 
     return sections;
@@ -53,9 +52,14 @@ const generateSections = ({ region, company }: { region: string; company: string
 
 const region: NextPage<{ region: string }> = ({ region }) => {
     const company = 'company name';
-    const randomNum = Math.floor(Math.random() * 100);
     const sections = generateSections({ region, company });
-    return <div className='region'>{sections}</div>;
+    return (
+        <div className='region'>
+            {sections}
+            <Items />
+            <Customers />
+        </div>
+    );
 };
 
 export default region;
