@@ -6,7 +6,7 @@ const client = (
     <div className='clientContainer'>
         <Avatar src={customerAvatar.src} className='avatar' />
         <div className='clientNameAndRole'>
-            <h3 className='clientName'>Jeremy Hadad</h3>
+            <h3 className='clientName'>Jérémy Hadad</h3>
             <h5 className='clientRole'>RÉGION LYONNAISE</h5>
         </div>
     </div>
