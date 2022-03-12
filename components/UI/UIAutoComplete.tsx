@@ -19,14 +19,19 @@ const UIAutoComplete = () => {
         return toast.error('mauvaise région');
     };
 
+    console.log(city);
+
     return (
         <div className='uiAutoComplete'>
             <Autocomplete
                 sx={{ width: 300 }}
+                disableClearable
+                freeSolo
                 options={regions.map((option) => option)}
                 renderInput={(params) => (
                     <TextField
                         onChange={onChange}
+                        onSelect={onChange}
                         name='city'
                         {...params}
                         label='Région'
