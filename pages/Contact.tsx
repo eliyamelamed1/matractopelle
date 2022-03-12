@@ -47,7 +47,7 @@ const Contact = () => {
                 <h1>Obtenez un devis</h1>
                 <h5>PARLEZ-NOUS DE VOS BESOINS, RÉPONSE IMMÉDIATE</h5>
                 <TextField label='Nom/Prénom' name='name' className='input' variant='standard' size='small' required />
-                <TextField label='Email' name='email' className='input' variant='standard' size='small' required />
+                <TextField label='E-mail' name='email' className='input' variant='standard' size='small' required />
                 <TextField
                     label='Code postal'
                     name='zipCode'
@@ -58,14 +58,21 @@ const Contact = () => {
                 />
                 <TextField label='Téléphone' name='phone' className='input' variant='standard' size='small' required />
                 <TextField label='Votre ville' name='city' className='input' variant='standard' size='small' required />
-                <TextField defaultValue='' select label='Type de grue souhaité' variant='standard' name='item' required>
+                <TextField
+                    defaultValue=''
+                    select
+                    label='Type de tractopelle souhaité'
+                    variant='standard'
+                    name='item'
+                    required
+                >
                     {currencies.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
                             {option.value}
                         </MenuItem>
                     ))}
                 </TextField>
-                <TextField label='Message' variant='standard' multiline size='small' name='message' />
+                <TextField label='Un message' variant='standard' multiline size='small' name='message' />
                 <Button type='submit'>Envoyer</Button>
             </form>
         </div>

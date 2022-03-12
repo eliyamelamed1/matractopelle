@@ -17,11 +17,11 @@ const contactOptions = () => {
             </div>
             <div className='iconAndText'>
                 <EmailIcon />
-                <span>contact@allogrue.fr</span>
+                <span>company@mail.fr</span>
             </div>
             <div className='iconAndText'>
                 <LocationCityIcon />
-                <span>SARL REZO SERVICES</span>
+                <span>Services de tracteur</span>
             </div>
         </>
     );
@@ -32,9 +32,9 @@ const aboutUs = () => {
         <div className='aboutUs'>
             <h1 className='title'>Qui Sommes-Nous ?</h1>
             <p>
-                BULDOZZZER.FR propose à ses clients entreprises ou particuliers des services de transport et location de
-                bennes ainsi que de gestion de déchets. Pour cela, nous mettons à disposition, sur nos sites clients,
-                des bennes de toutes tailles et pour tout type de déchets.
+                notre société propose à ses clients professionnels et particuliers des services de transport et de
+                location de tracteurs. Pour cela, nous mettons à disposition, sur nos sites clients, des bennes de
+                toutes tailles et pour tous types de déchets.
             </p>
         </div>
     );

@@ -7,14 +7,14 @@ const areas = () => {
             <section>
                 <h5>UNE LIVRAISON ULTRA RAPIDE</h5>
                 <h1>
-                    Louez une grue sous
-                    <span> 24 à 48H sur toute la France</span>
+                    Louez une tractopelle sous
+                    <span> 24 à 48h partout en France</span>
                 </h1>
                 <p>
-                    UNE LIVRAISON ULTRA RAPIDE Louez une grue sous 24 à 48H sur toute la France Avec plus de 1000
-                    collaborateurs dans toute la France, ALLOGRUE.FR est tout proche de votre chantier. Notre service de
-                    location de grues est donc un service de proximité. Quand vous louez une grue avec la société
-                    ALLOGRUE.FR, vous faites travailler un acteur local.
+                    LIVRAISON ULTRA RAPIDE Louez une tractopelle sous 24 à 48 heures dans toute la France Avec plus de 1
+                    000 collaborateurs dans toute la France, Notre entreprise est très proche de votre chantier. Notre
+                    service de location de tractopelles est donc un service de proximité. Lorsque vous louez une
+                    tractopelle avec notre société, vous faites affaire avec un acteur local.
                 </p>
                 <UIAutoComplete />
             </section>

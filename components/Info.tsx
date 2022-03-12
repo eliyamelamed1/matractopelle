@@ -7,18 +7,19 @@ const paragraphs = (
         <section>
             <div>
                 <h1>
-                    QU'EST-CE QUE LA <span> GRUE MOBILE ?</span>
+                    QU'EST-CE QUE LA <span> Tractopelle ?</span>
                 </h1>
                 <p>
-                    La grue mobile est une grue de construction automotrice utilisée pour le transport et le levage.
-                    Cette machine peut également être appelée camion-grue, camion-grue ou encore grue automotrice. Ce
-                    type de grue est utilisé pour les équipements de levage fixes existants qui ne sont pas capables
-                    d'effectuer le travail requis. Vous pouvez également louer une petite grue mobile pour effectuer des
-                    travaux plus petits, ou une mini-grue araignée pour terminer les zones difficiles d'accès. Les grues
-                    mobiles peuvent atteindre une hauteur de 91 m et supporter une charge de 130 T. Elles sont idéales
-                    pour les opérations de levage dans le bâtiment, l'industrie ou le secteur du bâtiment (par exemple,
-                    levage de matériaux sur le toit). Des grues mobiles peuvent être louées
-                    <span> sur toute la France.</span>
+                    Une chargeuse-pelleteuse, également appelée chargeuse-pelleteuse, chargeuse-pelleteuse, excavatrice
+                    en termes simples, ou familièrement abrégée en rétrocaveuse dans l'industrie, est un véhicule
+                    d'équipement lourd qui se compose d'une unité de type tracteur équipée d'une pelle/godet de type
+                    chargeur sur l'avant et une rétrocaveuse à l'arrière. En raison de sa (relativement) petite taille
+                    et de sa polyvalence, les chargeuses-pelleteuses sont très courantes dans le génie urbain et les
+                    petits projets de construction (comme la construction d'une petite maison, la réparation de routes
+                    urbaines, etc.) ainsi que dans les pays en développement. Ce type d'engin s'apparente et dérive de
+                    ce que l'on appelle aujourd'hui un TLB (Tractor-Loader-Backhoe), c'est-à-dire un tracteur agricole
+                    équipé d'un chargeur frontal et d'une attache rétrocaveuse arrière.
+                    <span> les tractopelles peuvent être louées dans toute la France.</span>
                 </p>
             </div>
             <img className='image' src={FirstImage.src} />
@@ -31,9 +32,9 @@ const paragraphs = (
                     UN SERVICE <span> DE CONFIANCE</span>
                 </h1>
                 <p>
-                    Nous vous proposons une
-                    <span> large gamme de grues mobiles</span>
-                    et pouvons engager des chauffeurs en France pour répondre à vos besoins de levage.
+                    Nous proposons une large gamme
+                    <span> de tractopelles</span>
+                    et pouvons embaucher des chauffeurs en France pour répondre à vos besoins de levage.
                 </p>
             </div>
         </section>

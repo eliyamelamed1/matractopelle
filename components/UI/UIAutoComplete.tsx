@@ -31,7 +31,7 @@ const UIAutoComplete = () => {
                         onChange={onChange}
                         name='city'
                         {...params}
-                        label='City'
+                        label='Région'
                         InputProps={{
                             ...params.InputProps,
                             type: 'search',
@@ -40,7 +40,7 @@ const UIAutoComplete = () => {
                 )}
             />
             <button onClick={onSubmit} className='button'>
-                Check If Available
+                Vérifier si disponible
             </button>
         </div>
     );

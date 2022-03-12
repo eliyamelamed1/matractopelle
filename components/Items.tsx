@@ -14,8 +14,8 @@ const Items = () => {
                         <h2>Minipelle</h2>
                     </>
                     <p>
-                        La grue automotrice fait aussi partie de la large gamme des grues de chantier que nous mettons à
-                        la location dans notre parc d’engins de levage et de manutention.
+                        La Minipelle fait également partie de la large gamme de tractopelles que nous louons dans notre
+                        parc de matériel de levage et de manutention.
                     </p>
                 </div>
                 <div className='bubbles'>
@@ -24,8 +24,8 @@ const Items = () => {
                         <h2>Pelle</h2>
                     </>
                     <p>
-                        La grue sur remorque est idéale pour tous les travaux de levage et du transport en vous
-                        garantissant la sécurité de toutes vos marchandises.
+                        La Pelle est idéale pour tous les travaux de levage et de transport, garantissant la sécurité de
+                        toutes vos marchandises.
                     </p>
                 </div>
                 <div className='bubbles'>
@@ -33,7 +33,7 @@ const Items = () => {
                         <Avatar src={Tractopelle.src} className='avatar' />
                         <h2>Tractopelle</h2>
                     </>
-                    <p>La grue mobile peut aussi être appelée : camion grue, grue sur porteur, grue sur roues.</p>
+                    <p>The best backhoe loaders at the lowest prices. 24/7 professional support included.</p>
                 </div>
             </section>
         </div>

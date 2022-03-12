@@ -20,7 +20,7 @@ const Hero = () => {
             <section className='heroContainer'>
                 <section className='heroSection'>
                     <span>DISPONIBLE À LA JOURNÉE, À LA SEMAINE OU AU MOIS</span>
-                    <h1 className='title'>N°1 DE LA LOCATION DE GRUES AVEC CHAUFFEUR</h1>
+                    <h1 className='title'>N°1 DE LA LOCATION DE TRACTOPLLES AVEC CHAUFFEUR</h1>
                     <p>
                         Grâce à nos multiples centres logistiques à travers le pays : 3 minutes, c'est le temps qu'il
                         nous faut pour vous établir un devis sur mesure.
