@@ -1,5 +1,6 @@
 .uiAutoComplete {
     display: flex;
+    flex-wrap: wrap;
     gap: 1.5rem;
     .box {
         background-color: white;
@@ -8,5 +9,6 @@
     .button {
         @include button;
         border-radius: 5px;
+        margin: auto;
     }
 }

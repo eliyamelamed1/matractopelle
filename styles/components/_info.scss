@@ -34,7 +34,7 @@
         }
     }
     .image {
-        width: 20rem;
+        width: clamp(5rem, 90vw, 20rem);
     }
 
     .bubbles {
