@@ -1,9 +1,17 @@
 export const pageRoutes = {
-    '/': 'home',
-    home: '/',
-    areas: '/areas',
+    '/': 'accueil',
+    accueil: '/',
+    'location de pelleteuse': '/areas',
     contact: '/contact',
+    'demande de devis': '/contact',
 };
+
+// export const pageRoutes = {
+//     '/': 'accueil',
+//     accueil: '/',
+//     'location de pelleteuse': '/location de pelleteuse',
+//     'demande de devis': '/demande de devis',
+// };
 
 export const regions = [
     'Ain',

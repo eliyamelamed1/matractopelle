@@ -3,7 +3,6 @@ import * as React from 'react';
 import AgricultureIcon from '@mui/icons-material/Agriculture';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
 import Link from 'next/link';
@@ -11,11 +10,10 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import { pageRoutes } from '../utils/enum';
 import { useRouter } from 'next/router';
 
-const pages = ['home', 'areas', 'contact'];
+const pages = ['accueil', 'location de pelleteuse', 'demande de devis'];
 
 const Navbar = () => {
     const router = useRouter();
