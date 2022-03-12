@@ -34,10 +34,10 @@ const Contact = () => {
 
         try {
             await emailjs.sendForm('service_sknqxih', 'template_79ixiwh', form.current, 'JfIaPcyIDQHYxoOel');
-            toast.success('mail successfully sent');
+            toast.success('courrier envoyé avec succès');
             form.current.reset();
         } catch (err) {
-            toast.error('an error sending the text');
+            toast.error('erreur - le mail a été envoyé');
         }
     };
 
