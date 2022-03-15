@@ -16,7 +16,7 @@ const UIAutoComplete = () => {
     const lowerCaseRegions = regions.map((region) => region.toLowerCase());
     const onSubmit = () => {
         if (lowerCaseRegions.includes(city.toLowerCase())) return router.push(city.toLowerCase());
-        return toast.error('mauvaise région');
+        return toast.error('mauvaise départements');
     };
 
     return (
@@ -32,7 +32,7 @@ const UIAutoComplete = () => {
                         onSelect={onChange}
                         name='city'
                         {...params}
-                        label='Région'
+                        label='Départements'
                         InputProps={{
                             ...params.InputProps,
                             type: 'search',

@@ -53,7 +53,7 @@ const generateSections = ({ region, company }: { region: string; company: string
 };
 
 const region: NextPage<{ region: string }> = ({ region }) => {
-    const company = 'our company';
+    const company = 'Our Compagny: plateforme, équipe, société, entreprise.';
     const sections = generateSections({ region, company });
     return (
         <div className='region'>
