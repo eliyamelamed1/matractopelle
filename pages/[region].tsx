@@ -2,14 +2,20 @@ import Customers from '../components/Customers';
 import Items from '../components/Items';
 import type { NextPage } from 'next';
 import React from 'react';
-import { regions } from '../utils/enum';
+import axios from 'axios';
 import { texts } from '../utils/texts';
 
 export async function getServerSideProps(context) {
     const region: string = context.params.region;
-    const lowerCaseRegions = regions.map((region) => region.toLowerCase());
-    const lowerCaseRegion = region.toLowerCase();
-    const isRegionExist = lowerCaseRegions.includes(lowerCaseRegion);
+    const res = await axios.get(
+        `https://data.opendatasoft.com/api/records/1.0/search/?dataset=geonames-postal-code%40public&q=${region}&rows=50&facet=country_code`
+    );
+    const options = [];
+    for (const record of res.data.records) {
+        const { postal_code, place_name } = record.fields;
+        options.push(`${postal_code} (${place_name})`);
+    }
+    const isRegionExist = options.includes(region);
 
     if (isRegionExist) {
         return { props: { region } };

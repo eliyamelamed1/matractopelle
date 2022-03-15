@@ -1,21 +1,47 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-import { regions } from '../../utils/enum';
+import axios from 'axios';
+import { debounce } from 'lodash';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 
 const UIAutoComplete = () => {
     const [city, setCity] = useState('');
-    const onChange = (e) => {
-        const { value } = e.target;
-        setCity(value);
-    };
+    const [options, setOptions] = useState<string[]>([]);
     const router = useRouter();
-    const lowerCaseRegions = regions.map((region) => region.toLowerCase());
+
+    const deb = useCallback(
+        debounce((e) => {
+            setCity(e.target.value);
+        }, 100),
+        [city]
+    );
+
+    const onChange = (e) => {
+        deb(e);
+    };
+
+    useEffect(() => {
+        const searchRegions = async () => {
+            if (city?.trim() === '') return setOptions([]);
+
+            const res = await axios.get(
+                `https://data.opendatasoft.com/api/records/1.0/search/?dataset=geonames-postal-code%40public&q=${city}&rows=50&facet=country_code`
+            );
+
+            setOptions([]);
+            for (const record of res.data.records) {
+                const { postal_code, place_name } = record.fields;
+                setOptions((prevOptions) => [...prevOptions, `${postal_code} (${place_name})`]);
+            }
+        };
+        searchRegions();
+    }, [city]);
+
     const onSubmit = () => {
-        if (lowerCaseRegions.includes(city.toLowerCase())) return router.push(city.toLowerCase());
+        if (options.includes(city)) return router.push(city);
         return toast.error('mauvaise départements');
     };
 
@@ -25,7 +51,7 @@ const UIAutoComplete = () => {
                 sx={{ width: 300 }}
                 disableClearable
                 freeSolo
-                options={regions.map((option) => option)}
+                options={options.map((option) => option)}
                 renderInput={(params) => (
                     <TextField
                         onChange={onChange}
