@@ -17,7 +17,7 @@ const UIAutoComplete = () => {
     const deb = useCallback(
         debounce((e) => {
             setCity(e.target.value);
-        }, 100),
+        }, 300),
         [city]
     );
 
