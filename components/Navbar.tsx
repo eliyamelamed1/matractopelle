@@ -92,6 +92,7 @@ const Navbar = () => {
                                 margin: 'auto',
                                 display: 'flex',
                                 gap: '0.5rem',
+                                color: 'white',
                             }}
                         >
                             <AgricultureIcon />
@@ -110,6 +111,7 @@ const Navbar = () => {
                             style={{
                                 display: 'flex',
                                 gap: '0.5rem',
+                                color: 'white',
                             }}
                         >
                             <AgricultureIcon />
