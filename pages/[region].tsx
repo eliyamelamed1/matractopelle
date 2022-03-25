@@ -4,6 +4,7 @@ import type { NextPage } from 'next';
 import React from 'react';
 import RegionsList from '../components/RegionsList';
 import axios from 'axios';
+import { departmentsList } from '../utils/enum';
 import { texts } from '../utils/texts';
 
 export async function getServerSideProps(context) {
@@ -16,12 +17,12 @@ export async function getServerSideProps(context) {
         const { postal_code, place_name } = record.fields;
         options.push(`${postal_code} (${place_name})`);
     }
-    const isRegionExist = options.includes(region);
+    const isRegionExist = options.includes(region) || departmentsList.includes(region);
 
     options = [];
-    const num = Math.round(Math.random());
+    const num = region.slice(0, 2);
     res = await axios.get(
-        `https://data.opendatasoft.com/api/records/1.0/search/?dataset=geonames-postal-code%40public&q=${num}&rows=50&facet=country_code`
+        `https://data.opendatasoft.com/api/records/1.0/search/?dataset=geonames-postal-code%40public&q=${num}&rows=100&facet=country_code`
     );
     for (const record of res.data.records) {
         let { postal_code, place_name } = record.fields;
