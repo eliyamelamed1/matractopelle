@@ -2,23 +2,35 @@ import Customers from '../components/Customers';
 import Items from '../components/Items';
 import type { NextPage } from 'next';
 import React from 'react';
+import RegionsList from '../components/RegionsList';
 import axios from 'axios';
 import { texts } from '../utils/texts';
 
 export async function getServerSideProps(context) {
     const region: string = context.params.region;
-    const res = await axios.get(
+    let res = await axios.get(
         `https://data.opendatasoft.com/api/records/1.0/search/?dataset=geonames-postal-code%40public&q=${region}&rows=50&facet=country_code`
     );
-    const options = [];
-    for (const record of res.data.records) {
+    let options = [];
+    for (const record of res.data?.records) {
         const { postal_code, place_name } = record.fields;
         options.push(`${postal_code} (${place_name})`);
     }
     const isRegionExist = options.includes(region);
 
+    options = [];
+    const num = Math.round(Math.random());
+    res = await axios.get(
+        `https://data.opendatasoft.com/api/records/1.0/search/?dataset=geonames-postal-code%40public&q=${num}&rows=50&facet=country_code`
+    );
+    for (const record of res.data.records) {
+        let { postal_code, place_name } = record.fields;
+        postal_code = postal_code.replace('CEDEX', '');
+        options.push(`${postal_code} (${place_name})`);
+    }
+
     if (isRegionExist) {
-        return { props: { region } };
+        return { props: { region, options } };
     } else {
         return { notFound: true };
     }
@@ -58,7 +70,7 @@ const generateSections = ({ region, company }: { region: string; company: string
     return sections;
 };
 
-const region: NextPage<{ region: string }> = ({ region }) => {
+const region: NextPage<{ region: string; options: any }> = ({ region, options }) => {
     const company = 'Our Compagny: plateforme, équipe, société, entreprise.';
     const sections = generateSections({ region, company });
     return (
@@ -66,6 +78,7 @@ const region: NextPage<{ region: string }> = ({ region }) => {
             {sections}
             <Items />
             <Customers />
+            {options && <RegionsList options={options} />}
         </div>
     );
 };

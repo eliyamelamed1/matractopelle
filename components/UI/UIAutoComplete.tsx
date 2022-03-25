@@ -36,7 +36,6 @@ const UIAutoComplete = () => {
             setOptions([]);
             for (const record of res.data.records) {
                 let { postal_code, place_name } = record.fields;
-                place_name = place_name.replace('CEDEX', '');
                 postal_code = postal_code.replace('CEDEX', '');
                 setOptions((prevOptions) => [...prevOptions, `${postal_code} (${place_name})`]);
             }
