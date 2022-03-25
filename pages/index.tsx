@@ -6,7 +6,7 @@ import React from 'react';
 import RegionsList from '../components/RegionsList';
 import axios from 'axios';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const options = [];
     const num = Math.round(Math.random());
     const res = await axios.get(
