@@ -76,9 +76,9 @@ const region: NextPage<{ region: string; options: any }> = ({ region, options })
     return (
         <div className='region'>
             {sections}
-            <Items />
-            <Customers />
-            {options && <RegionsList options={options} />}
+            {/* <Items /> */}
+            {/* <Customers /> */}
+            {/* {options && <RegionsList options={options} />} */}
         </div>
     );
 };
