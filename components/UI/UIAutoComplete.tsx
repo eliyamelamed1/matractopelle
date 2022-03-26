@@ -3,13 +3,14 @@ import React, { useCallback, useEffect, useState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import { CircularProgress } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import axios from 'axios';
+import { autoCompleteSearchAction } from '../../redux/slices/regionSlice';
 import { debounce } from 'lodash';
-import { endpoints } from '../../utils/enum';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 
 const UIAutoComplete = () => {
+    const dispatch = useDispatch();
     const [city, setCity] = useState('');
     const [options, setOptions] = useState<string[]>([]);
     const [loading, setLoading] = useState(false);
@@ -28,20 +29,12 @@ const UIAutoComplete = () => {
 
     useEffect(() => {
         const searchRegions = async () => {
-            if (city?.trim() === '') return setOptions([]);
             setLoading(true);
-            const res = await axios.get(endpoints(city, 50).fetchCities);
-            setOptions([]);
-            for (const record of res.data.records) {
-                let { postal_code, place_name } = record.fields;
-                postal_code = postal_code.replace('" ".*', '');
-                if (postal_code.length !== 5) continue;
-                setOptions((prevOptions) => [...prevOptions, `${postal_code} (${place_name})`]);
-            }
+            await dispatch(autoCompleteSearchAction({ city, setOptions }));
             setLoading(false);
         };
         searchRegions();
-    }, [city]);
+    }, [city, dispatch]);
 
     const onSubmit = () => {
         if (options.includes(city)) return router.push(city);

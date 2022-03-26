@@ -1,3 +1,4 @@
+import { citiesInDepartmentAction, isRegionExistAction } from '../redux/slices/regionSlice';
 import { departmentsList, endpoints } from '../utils/enum';
 
 import Customers from '../components/Customers';
@@ -6,35 +7,19 @@ import type { NextPage } from 'next';
 import React from 'react';
 import RegionsList from '../components/RegionsList';
 import axios from 'axios';
+import store from '../redux/store';
 import { texts } from '../utils/texts';
 
 export async function getServerSideProps(context) {
     const region: string = context.params.region;
-    let res = await axios.get(endpoints(region, 50).fetchCities);
-    let options = [];
-    for (const record of res.data?.records) {
-        const { postal_code, place_name } = record.fields;
-        options.push(`${postal_code} (${place_name})`);
-    }
-    const isRegionExist = options.includes(region) || departmentsList.includes(region);
+    await store.dispatch(isRegionExistAction({ region }));
+    const { isRegionExist } = store.getState().regionSlice;
+    if (!isRegionExist) return { notFound: true };
 
-    options = [];
-    const num = region.slice(0, 2);
-    res = await axios.get(endpoints(num, 100).fetchCities);
-    for (const record of res.data.records) {
-        let { postal_code, place_name } = record.fields;
-        postal_code = postal_code.replace('" ".*', '');
-        if (postal_code.length !== 5) continue;
+    await store.dispatch(citiesInDepartmentAction({ region }));
+    const { citiesInDepartment } = store.getState().regionSlice;
 
-        options.push(`${postal_code} (${place_name})`);
-    }
-    options.sort();
-
-    if (isRegionExist) {
-        return { props: { region, options } };
-    } else {
-        return { notFound: true };
-    }
+    return { props: { region, citiesInDepartment } };
 }
 
 const generateSections = ({ region, company }: { region: string; company: string }) => {
@@ -71,7 +56,7 @@ const generateSections = ({ region, company }: { region: string; company: string
     return sections;
 };
 
-const region: NextPage<{ region: string; options: any }> = ({ region, options }) => {
+const region: NextPage<{ region: string; citiesInDepartment: string[] }> = ({ region, citiesInDepartment }) => {
     const company = 'Our Compagny: plateforme, équipe, société, entreprise.';
     const sections = generateSections({ region, company });
     return (
@@ -79,7 +64,7 @@ const region: NextPage<{ region: string; options: any }> = ({ region, options })
             {sections}
             <Items />
             <Customers />
-            {options && <RegionsList options={options} />}
+            {citiesInDepartment && <RegionsList options={citiesInDepartment} />}
         </div>
     );
 };
