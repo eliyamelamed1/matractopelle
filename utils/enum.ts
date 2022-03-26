@@ -6,6 +6,8 @@ export const pageRoutes = {
     'demande de devis': '/Contact',
 };
 
+const endpoints = {};
+
 export const departmentsList = [
     `01 Ain`,
     `02 Aisne`,

@@ -30,9 +30,9 @@ const UIAutoComplete = () => {
             if (city?.trim() === '') return setOptions([]);
             setLoading(true);
             const res = await axios.get(
-                `https://data.opendatasoft.com/api/records/1.0/search/?dataset=geonames-postal-code%40public&q=${city}&rows=50&facet=country_code`
+                `https://data.opendatasoft.com/api/records/1.0/search/?dataset=geonames-postal-code%40public&q=${city}&rows=50&refine.country_code=FR`
             );
-
+            console.log(res);
             setOptions([]);
             for (const record of res.data.records) {
                 let { postal_code, place_name } = record.fields;

@@ -11,7 +11,7 @@ import { texts } from '../utils/texts';
 export async function getServerSideProps(context) {
     const region: string = context.params.region;
     let res = await axios.get(
-        `https://data.opendatasoft.com/api/records/1.0/search/?dataset=geonames-postal-code%40public&q=${region}&rows=50&facet=country_code`
+        `https://data.opendatasoft.com/api/records/1.0/search/?dataset=geonames-postal-code%40public&q=${region}&rows=50&refine.country_code=FR`
     );
     let options = [];
     for (const record of res.data?.records) {
@@ -23,7 +23,7 @@ export async function getServerSideProps(context) {
     options = [];
     const num = region.slice(0, 2);
     res = await axios.get(
-        `https://data.opendatasoft.com/api/records/1.0/search/?dataset=geonames-postal-code%40public&q=${num}&rows=100&facet=country_code`
+        `https://data.opendatasoft.com/api/records/1.0/search/?dataset=geonames-postal-code%40public&q=${num}&rows=100&refine.country_code=FR`
     );
     for (const record of res.data.records) {
         let { postal_code, place_name } = record.fields;
