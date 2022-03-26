@@ -40,12 +40,11 @@ export const isRegionExistAction = createAsyncThunk<
 >('isRegionExistAction', async ({ region }, { rejectWithValue }) => {
     try {
         const res = await axios.get(endpoints(region, 1).fetchCities);
-        const options = [];
-        for (const record of res.data?.records) {
-            const { postal_code, place_name } = record.fields;
-            options.push(`${postal_code} (${place_name})`);
-        }
-        const isRegionExist = options.includes(region) || departmentsList.includes(region);
+        const record = res.data?.records[0];
+        const { postal_code, place_name } = record.fields;
+        const result = `${postal_code} (${place_name})`;
+
+        const isRegionExist = region === result || departmentsList.includes(region);
         return isRegionExist;
     } catch (err) {
         return rejectWithValue(err);
