@@ -8,7 +8,6 @@ import axios from 'axios';
 import { departmentsList } from '../utils/enum';
 
 const Home: NextPage = () => {
-    console.log(departmentsList);
     return (
         <>
             <Info />
