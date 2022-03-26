@@ -5,6 +5,7 @@ import { CircularProgress } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
 import { debounce } from 'lodash';
+import { endpoints } from '../../utils/enum';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 
@@ -29,10 +30,7 @@ const UIAutoComplete = () => {
         const searchRegions = async () => {
             if (city?.trim() === '') return setOptions([]);
             setLoading(true);
-            const res = await axios.get(
-                `https://data.opendatasoft.com/api/records/1.0/search/?dataset=geonames-postal-code%40public&q=${city}&rows=50&refine.country_code=FR`
-            );
-            console.log(res);
+            const res = await axios.get(endpoints(city, 50).fetchCities);
             setOptions([]);
             for (const record of res.data.records) {
                 let { postal_code, place_name } = record.fields;

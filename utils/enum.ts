@@ -6,7 +6,9 @@ export const pageRoutes = {
     'demande de devis': '/Contact',
 };
 
-const endpoints = {};
+export const endpoints = (city: string, rows = 50) => ({
+    fetchCities: `https://data.opendatasoft.com/api/records/1.0/search/?dataset=geonames-postal-code%40public&q=${city}&rows=${rows}&refine.country_code=FR`,
+});
 
 export const departmentsList = [
     `01 Ain`,
