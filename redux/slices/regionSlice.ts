@@ -68,6 +68,7 @@ export const citiesInDepartmentAction = createAsyncThunk<
             options.push(`${postal_code} (${place_name})`);
         }
         options.sort();
+
         return options;
     } catch (err) {
         return rejectWithValue(err);

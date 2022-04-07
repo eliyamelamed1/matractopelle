@@ -22,9 +22,16 @@ export async function getServerSideProps(context) {
     return { props: { region, citiesInDepartment } };
 }
 
-const generateSections = ({ region, company }: { region: string; company: string }) => {
+const generateSections = (region: string) => {
     const memo: number[] = [];
-    console.log(memo);
+    const companies = ['plateforme', 'équipe', 'société', 'entreprise'];
+    const considerables = [
+        'considérable',
+        'important',
+        'consequent',
+        'substantiel',
+    ]
+
     while (memo.length < 6) {
         const randomNum = Math.floor(Math.random() * 100);
         if (!memo.includes(randomNum)) memo.push(randomNum);
@@ -33,10 +40,13 @@ const generateSections = ({ region, company }: { region: string; company: string
     const sections = (
         <div className='sections'>
             {memo.map((item) => {
+                const dep = region.slice(0, 2);
+                const company = companies[Math.floor(Math.random() * companies.length)];
+                const considerable = considerables[Math.floor(Math.random() * companies.length)];
                 return (
                     <section key={item}>
-                        <h1>{texts({ region, company })[item].title}</h1>
-                        <p>{texts({ region, company })[item].paragraph}</p>
+                        <h1>{texts({ region, company, dep,considerable })[item].title}</h1>
+                        <p>{texts({ region, company, dep,considerable })[item].paragraph}</p>
                     </section>
                 );
             })}
@@ -47,8 +57,7 @@ const generateSections = ({ region, company }: { region: string; company: string
 };
 
 const region: NextPage<{ region: string; citiesInDepartment: string[] }> = ({ region, citiesInDepartment }) => {
-    const company = 'Our Compagny: plateforme, équipe, société, entreprise.';
-    const sections = generateSections({ region, company });
+    const sections = generateSections(region);
     return (
         <div className='region'>
             {sections}
