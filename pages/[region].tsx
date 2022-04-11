@@ -25,12 +25,7 @@ export async function getServerSideProps(context) {
 const generateSections = (region: string) => {
     const memo: number[] = [];
     const companies = ['plateforme', 'équipe', 'société', 'entreprise'];
-    const considerables = [
-        'considérable',
-        'important',
-        'consequent',
-        'substantiel',
-    ]
+    const considerables = ['considérable', 'important', 'consequent', 'substantiel'];
 
     while (memo.length < 6) {
         const randomNum = Math.floor(Math.random() * 100);
@@ -40,13 +35,14 @@ const generateSections = (region: string) => {
     const sections = (
         <div className='sections'>
             {memo.map((item) => {
-                const dep = region.slice(0, 2);
+                const startIndex = region.indexOf('(') + 1;
+                const dep = region.slice(startIndex, startIndex + 2);
                 const company = companies[Math.floor(Math.random() * companies.length)];
                 const considerable = considerables[Math.floor(Math.random() * companies.length)];
                 return (
                     <section key={item}>
-                        <h1>{texts({ region, company, dep,considerable })[item].title}</h1>
-                        <p>{texts({ region, company, dep,considerable })[item].paragraph}</p>
+                        <h1>{texts({ region, company, dep, considerable })[item].title}</h1>
+                        <p>{texts({ region, company, dep, considerable })[item].paragraph}</p>
                     </section>
                 );
             })}
