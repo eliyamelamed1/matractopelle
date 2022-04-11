@@ -8,6 +8,7 @@ export const pageRoutes = {
 
 export const endpoints = (city: string, rows = 50) => ({
     fetchCities: `https://data.opendatasoft.com/api/records/1.0/search/?dataset=geonames-postal-code%40public&q=${city}&rows=${rows}&refine.country_code=FR`,
+    fetchCitiesInDep: `https://data.opendatasoft.com/api/records/1.0/search/?dataset=geonames-postal-code%40public&q=${city}&rows=${rows}&refine.country_code=FR&refine.admin_code2=${city}`,
 });
 
 export const departmentsList = [

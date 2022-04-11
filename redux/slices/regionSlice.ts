@@ -60,7 +60,7 @@ export const citiesInDepartmentAction = createAsyncThunk<
     try {
         const options = [];
         region = region.slice(0, 2);
-        const res = await axios.get(endpoints(region, 100).fetchCities);
+        const res = await axios.get(endpoints(region, 10000).fetchCitiesInDep);
         for (const record of res.data.records) {
             let { postal_code, place_name } = record.fields;
             postal_code = postal_code.replace('" ".*', '');

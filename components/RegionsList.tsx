@@ -5,6 +5,8 @@ import List from '@mui/material/List';
 
 const RegionsList: React.FC<{ options: string[] }> = ({ options }) => {
     options = [...options, '/'];
+    console.log(options);
+
     return (
         <div className='regionList'>
             <h1>certaines des régions avec lesquelles nous travaillons</h1>
