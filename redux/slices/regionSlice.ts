@@ -58,8 +58,6 @@ export const citiesInDepartmentAction = createAsyncThunk<
     }
 >('citiesInDepartmentAction', async ({ region }, { rejectWithValue }) => {
     try {
-        console.log('start');
-
         const options = [];
         const startIndex = region.indexOf('(') + 1;
         region = region.slice(startIndex, startIndex + 2);
