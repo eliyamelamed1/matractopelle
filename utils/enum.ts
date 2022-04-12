@@ -107,4 +107,4 @@ export const departmentsList = [
     `Seine-Saint-Denis (93)`,
     `Val-de-Marne (94)`,
     `Val-d'Oise (95)`,
-];
+].sort();
