@@ -30,10 +30,12 @@ const contactOptions = () => {
 const aboutUs = () => {
     return (
         <div className='aboutUs'>
-            <h1 className='title'>Qui Sommes-Nous ?</h1>
+            <h2>Qui Sommes-Nous ?</h2>
+            <h1 className='title'>UNE SOLUTION PERSONNALISEE SUR MESURE</h1>
             <p>
-                notre société propose à ses clients professionnels et particuliers des services de transport et de
-                location de tracteurs. De plus, notre société fournit une réponse rapide à nos clients.
+                Notre entreprise vous propose une large gamme d’engins de chantiers à louer et on vous aide à choisir le
+                modèle qui convient le mieux à la réalisation de vos projets. A chaque projet, nous vous offrons une
+                solution personnalisée sur mesure ! Faites votre demande de devis en ligne sans attendre.
             </p>
         </div>
     );

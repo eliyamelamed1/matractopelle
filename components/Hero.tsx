@@ -19,15 +19,17 @@ const Hero = () => {
             </div>
             <section className='heroContainer'>
                 <section className='heroSection'>
-                    <span>DISPONIBLE À LA JOURNÉE, À LA SEMAINE OU AU MOIS</span>
-                    <h1 className='title'>N°1 DE LA LOCATION DE TRACTOPLLES AVEC CHAUFFEUR</h1>
+                    <span>Disponible à la journée, à la semaine ou au mois</span>
+                    <h1 className='title'>LOUEZ VOTRE TRACTOPELLE AVEC OU SANS CHAUFFEUR</h1>
                     <p>
-                        Grâce à nos multiples centres logistiques à travers le pays : 3 minutes, c'est le temps qu'il
-                        nous faut pour vous établir un devis sur mesure.
+                        Notre entreprise, leader dans la location de tractopelles, de pelles mécaniques et différents
+                        engins de décaissement, vous propose en quelques minutes, un devis sur mesure et gratuit et ce,
+                        grâce à nos multiples centres logistiques sur le territoire, qui seront en mesure de vous
+                        trouver l’engin adapté à vos besoins
                     </p>
                     <div className='heroDetails'>
                         <Link href={pageRoutes.contact} passHref>
-                            <a className='link'>Obtenir un devis en ligne</a>
+                            <a className='link'>OBTENEZ VOTRE DEVIS MAINTENANT </a>
                         </Link>
 
                         <span className='phoneData'>

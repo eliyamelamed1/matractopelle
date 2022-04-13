@@ -6,7 +6,7 @@ const client = (
     <div className='clientContainer'>
         <Avatar src={customerAvatar.src} className='avatar' />
         <div className='clientNameAndRole'>
-            <h3 className='clientName'>Jérémy Hadad</h3>
+            <h3 className='clientName'>André Bernard</h3>
             <h5 className='clientRole'>RÉGION LYONNAISE</h5>
         </div>
     </div>
@@ -20,9 +20,9 @@ const Customers = () => {
                 FAITES COMME <span className='primaryColor'>NOS CLIENTS</span>
             </h1>
             <h3 className='paragraph'>
-                “Très bonne compréhension de ma demande et proposition d'une solution adaptée à mes besoins, une grue
-                performante en Moselle dans un délai serré. J'ai eu affaire à des gens très sympathiques pour la
-                commande et la tractopelle chauffeur aussi. Je recommande cette entreprise.”
+                Très bonne compréhension de ma demande et proposition d'une solution adaptée à mon besoin, une grue
+                performante en Moselle dans un délai serré. J'ai fait affaire avec des gens très sympathiques pour la
+                commande de tractopelle. Je recommande cette entreprise.”
             </h3>
             {client}
         </div>
