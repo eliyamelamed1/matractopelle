@@ -7,7 +7,7 @@ const client = (
         <Avatar src={customerAvatar.src} className='avatar' />
         <div className='clientNameAndRole'>
             <h3 className='clientName'>André Bernard</h3>
-            <h5 className='clientRole'>RÉGION LYONNAISE</h5>
+            <h5 className='clientRole'>Prestataire</h5>
         </div>
     </div>
 );
