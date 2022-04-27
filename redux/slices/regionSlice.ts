@@ -24,7 +24,7 @@ export const autoCompleteSearchAction = createAsyncThunk<
             let { postal_code, place_name } = record.fields;
             postal_code = postal_code.replace('" ".*', '');
             if (postal_code.length !== 5) continue;
-            setOptions((prevOptions: any) => [...prevOptions, `${place_name} (${postal_code})`]);
+            setOptions((prevOptions: any) => [...prevOptions, `${postal_code} (${place_name})`]);
         }
         return res;
     } catch (err) {
@@ -42,7 +42,7 @@ export const isRegionExistAction = createAsyncThunk<
         const res = await axios.get(endpoints(region, 1).fetchCities);
         const record = res.data?.records[0];
         const { postal_code, place_name } = record.fields;
-        const result = `${place_name} (${postal_code})`;
+        const result = `${postal_code} (${place_name})`;
 
         const isRegionExist = region === result || departmentsList.includes(region);
         return isRegionExist;
@@ -59,15 +59,14 @@ export const citiesInDepartmentAction = createAsyncThunk<
 >('citiesInDepartmentAction', async ({ region }, { rejectWithValue }) => {
     try {
         const options = [];
-        const startIndex = region.indexOf('(') + 1;
-        region = region.slice(startIndex, startIndex + 2);
-
+        region = region.slice(0, 2);
+        console.log(region);
         const res = await axios.get(endpoints(region, 10000).fetchCitiesInDep);
         for (const record of res.data.records) {
             let { postal_code, place_name } = record.fields;
             postal_code = postal_code.replace('" ".*', '');
             if (postal_code.length !== 5) continue;
-            options.push(`${place_name} (${postal_code})`);
+            options.push(`${postal_code} (${place_name})`);
         }
         options.sort();
 

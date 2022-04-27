@@ -8,10 +8,6 @@ type Texts = {
 
 
 export const texts = ({ region, company, dep, considerable }: Texts) => {
-    const startBracketIdx = region.indexOf('(')
-    const postalCode = region.slice(startBracketIdx+1,region.length - 1)
-    const regionName = region.slice(0,startBracketIdx).trim()
-    region = `${postalCode} (${regionName})`
     return [
         {
             title: `L’utilité de louer un engin de chantier sur le ${region}`,
