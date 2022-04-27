@@ -1,12 +1,10 @@
 import { citiesInDepartmentAction, isRegionExistAction } from '../redux/slices/regionSlice';
-import { departmentsList, endpoints } from '../utils/enum';
 
 import Customers from '../components/Customers';
 import Items from '../components/Items';
 import type { NextPage } from 'next';
 import React from 'react';
 import RegionsList from '../components/RegionsList';
-import axios from 'axios';
 import store from '../redux/store';
 import { texts } from '../utils/texts';
 
