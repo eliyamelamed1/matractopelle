@@ -20,7 +20,7 @@ const Customers = () => {
                 FAITES COMME <span className='primaryColor'>NOS CLIENTS</span>
             </h1>
             <h3 className='paragraph'>
-                Très bonne compréhension de ma demande et proposition d'une solution adaptée à mon besoin, une grue
+                Très bonne compréhension de ma demande et proposition d'une solution adaptée à mon besoin, une pelle
                 performante en Moselle dans un délai serré. J'ai fait affaire avec des gens très sympathiques pour la
                 commande de tractopelle. Je recommande cette entreprise.”
             </h3>
