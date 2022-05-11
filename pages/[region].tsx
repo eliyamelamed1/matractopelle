@@ -10,6 +10,7 @@ import { texts } from '../utils/texts';
 
 export async function getServerSideProps(context) {
     const region: string = context.params.region;
+
     await store.dispatch(isRegionExistAction({ region }));
     const { isRegionExist } = store.getState().regionSlice;
     if (!isRegionExist) return { notFound: true };
@@ -33,8 +34,7 @@ const generateSections = (region: string) => {
     const sections = (
         <div className='sections'>
             {memo.map((item) => {
-                const startIndex = region.indexOf('(') + 1;
-                const dep = region.slice(startIndex, startIndex + 2);
+                const dep = region.slice(0, 2) + 'BlahBlah';
                 const company = companies[Math.floor(Math.random() * companies.length)];
                 const considerable = considerables[Math.floor(Math.random() * companies.length)];
                 return (

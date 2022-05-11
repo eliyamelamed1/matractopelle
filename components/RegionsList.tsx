@@ -2,8 +2,11 @@ import * as React from 'react';
 
 import Link from 'next/link';
 import List from '@mui/material/List';
+import { useRouter } from 'next/router';
 
 const RegionsList: React.FC<{ options: string[] }> = ({ options }) => {
+    const router = useRouter();
+
     options = [...options, '/'];
     return (
         <div className='regionList'>
@@ -17,11 +20,23 @@ const RegionsList: React.FC<{ options: string[] }> = ({ options }) => {
                 d’une prestation réussie !
             </p>
             <List className='list'>
-                {options.map((value) => (
-                    <Link key={value} href={value}>
-                        {value === '/' ? '' : `→ ${value}`}
-                    </Link>
-                ))}
+                {options.map((value) => {
+                    if (router.pathname !== '/') {
+                        const indexOfComma = value.indexOf('(');
+                        const postalCode = value.slice(0, indexOfComma - 1);
+                        const name = value.slice(indexOfComma + 1, value.length - 1);
+                        return (
+                            <Link key={value} href={value}>
+                                {name.length < 1 ? '' : `→ ${name} (${postalCode})`}
+                            </Link>
+                        );
+                    }
+                    return (
+                        <Link key={value} href={value}>
+                            {value === '/' ? '' : `→ ${value}`}
+                        </Link>
+                    );
+                })}
             </List>
         </div>
     );
