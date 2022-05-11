@@ -7,7 +7,43 @@ import { useRouter } from 'next/router';
 const RegionsList: React.FC<{ options: string[] }> = ({ options }) => {
     const router = useRouter();
 
-    options = [...options, '/'];
+    const displayHomeText = () => {
+        options = [...options, '/'];
+
+        return options.map((value) => {
+            return (
+                <Link key={value} href={value}>
+                    {value === '/' ? '' : `→ ${value}`}
+                </Link>
+            );
+        });
+    };
+
+    const displayRegionText = () => {
+        options = [...options];
+
+        options.forEach((value, index) => {
+            const indexOfComma = value.indexOf('(');
+            const postalCode = value.slice(0, indexOfComma - 1);
+            const name = value.slice(indexOfComma + 1, value.length - 1);
+            options[index] = `${name} (${postalCode})`;
+        });
+
+        options.sort();
+        options.push('/');
+
+        return options.map((value) => {
+            const indexOfComma = value.indexOf('(');
+            const name = value.slice(0, indexOfComma - 1);
+            const postalCode = value.slice(indexOfComma + 1, value.length - 1);
+            return (
+                <Link key={value} href={value}>
+                    {name.length < 1 ? '' : `→ ${name} (${postalCode})`}
+                </Link>
+            );
+        });
+    };
+
     return (
         <div className='regionList'>
             <h1>UNE LIVRAISON ULTRA RAPIDE</h1>
@@ -19,25 +55,7 @@ const RegionsList: React.FC<{ options: string[] }> = ({ options }) => {
                 vous faites travailler un acteur local, proche et disponible. Travaillez avec nous, c’est la garantie
                 d’une prestation réussie !
             </p>
-            <List className='list'>
-                {options.map((value) => {
-                    if (router.pathname !== '/') {
-                        const indexOfComma = value.indexOf('(');
-                        const postalCode = value.slice(0, indexOfComma - 1);
-                        const name = value.slice(indexOfComma + 1, value.length - 1);
-                        return (
-                            <Link key={value} href={value}>
-                                {name.length < 1 ? '' : `→ ${name} (${postalCode})`}
-                            </Link>
-                        );
-                    }
-                    return (
-                        <Link key={value} href={value}>
-                            {value === '/' ? '' : `→ ${value}`}
-                        </Link>
-                    );
-                })}
-            </List>
+            <List className='list'>{router.pathname === '/' ? displayHomeText() : displayRegionText()}</List>
         </div>
     );
 };
