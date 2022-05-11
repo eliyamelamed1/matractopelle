@@ -34,7 +34,7 @@ const generateSections = (region: string) => {
     const sections = (
         <div className='sections'>
             {memo.map((item) => {
-                const dep = region.slice(0, 2) + 'BlahBlah';
+                const dep = region.slice(0, 2);
                 const company = companies[Math.floor(Math.random() * companies.length)];
                 const considerable = considerables[Math.floor(Math.random() * companies.length)];
                 return (
