@@ -9,7 +9,7 @@ const EmptyLink = () => <a style={{ cursor: 'unset' }} />;
 const RegionsList: React.FC<{ options: string[] }> = ({ options }) => {
     const router = useRouter();
 
-    const displayHomeText = () => {
+    const displayDepartmentsLinks = () => {
         options = [...options, '/'];
 
         return options.map((value) => {
@@ -22,7 +22,7 @@ const RegionsList: React.FC<{ options: string[] }> = ({ options }) => {
         });
     };
 
-    const displayRegionText = () => {
+    const displayRegionCitiesLinks = () => {
         options = [...options];
 
         options.forEach((value, index) => {
@@ -60,7 +60,9 @@ const RegionsList: React.FC<{ options: string[] }> = ({ options }) => {
                 vous faites travailler un acteur local, proche et disponible. Travaillez avec nous, c’est la garantie
                 d’une prestation réussie !
             </p>
-            <List className='list'>{router.pathname === '/' ? displayHomeText() : displayRegionText()}</List>
+            <List className='list'>
+                {router.pathname === '/' ? displayDepartmentsLinks() : displayRegionCitiesLinks()}
+            </List>
         </div>
     );
 };
