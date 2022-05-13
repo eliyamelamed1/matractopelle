@@ -4,6 +4,8 @@ import Link from 'next/link';
 import List from '@mui/material/List';
 import { useRouter } from 'next/router';
 
+const EmptyLink = () => <a style={{ cursor: 'unset' }} />;
+
 const RegionsList: React.FC<{ options: string[] }> = ({ options }) => {
     const router = useRouter();
 
@@ -11,6 +13,7 @@ const RegionsList: React.FC<{ options: string[] }> = ({ options }) => {
         options = [...options, '/'];
 
         return options.map((value) => {
+            if (value === '/') return <EmptyLink />;
             return (
                 <Link key={value} href={value}>
                     {value === '/' ? '' : `→ ${value}`}
@@ -37,9 +40,10 @@ const RegionsList: React.FC<{ options: string[] }> = ({ options }) => {
             const name = value.slice(0, indexOfComma - 1);
             const postalCode = value.slice(indexOfComma + 1, value.length - 1);
 
+            if (value === '/') return <EmptyLink />;
             return (
                 <Link key={value} href={`${postalCode} (${name})`}>
-                    {name.length < 1 ? '' : `→ ${name} (${postalCode})`}
+                    {`→ ${name} (${postalCode})`}
                 </Link>
             );
         });
