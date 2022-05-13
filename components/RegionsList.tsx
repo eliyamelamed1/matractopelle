@@ -36,8 +36,9 @@ const RegionsList: React.FC<{ options: string[] }> = ({ options }) => {
             const indexOfComma = value.indexOf('(');
             const name = value.slice(0, indexOfComma - 1);
             const postalCode = value.slice(indexOfComma + 1, value.length - 1);
+
             return (
-                <Link key={value} href={value}>
+                <Link key={value} href={`${postalCode} (${name})`}>
                     {name.length < 1 ? '' : `→ ${name} (${postalCode})`}
                 </Link>
             );
