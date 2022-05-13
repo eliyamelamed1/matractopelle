@@ -10,6 +10,6 @@ const UILoaderContainer = () => {
     Router.events.on('routeChangeComplete', () => setLoading(false));
     Router.events.on('routeChangeError', () => setLoading(false));
 
-    return <div className='ui-loader-container'>{loading && <CircularProgress size={70} />}</div>;
+    return <div className='ui-loader-container'>{loading && <CircularProgress size={70} className='loader' />}</div>;
 };
 export default UILoaderContainer;
