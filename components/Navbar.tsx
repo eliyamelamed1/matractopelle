@@ -96,7 +96,7 @@ const Navbar = () => {
                             }}
                         >
                             <AgricultureIcon />
-                            Tractors.fr
+                            Matractopelle.fr
                         </div>
                     </Box>
 
@@ -115,7 +115,7 @@ const Navbar = () => {
                             }}
                         >
                             <AgricultureIcon />
-                            Tractors.fr
+                            Matractopelle.fr
                         </div>
 
                         <div className='linkContainer'>
