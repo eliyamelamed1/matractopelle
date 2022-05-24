@@ -21,7 +21,7 @@ const contactOptions = () => {
             </div>
             <div className='iconAndText'>
                 <LocationCityIcon />
-                <span>Services de tracteur</span>
+                <span>Services de matractopelle</span>
             </div>
         </>
     );
