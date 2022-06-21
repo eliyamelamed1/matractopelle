@@ -12,7 +12,6 @@ const Home: NextPage = () => {
     return (
         <>
             <Info />
-            <ProviderCard />
             <Items />
             <Customers />
             {departmentsList && <RegionsList options={departmentsList} />}
