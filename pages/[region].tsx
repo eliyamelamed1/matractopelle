@@ -3,6 +3,7 @@ import { citiesInDepartmentAction, isRegionExistAction } from '../redux/slices/r
 import Customers from '../components/Customers';
 import Items from '../components/Items';
 import type { NextPage } from 'next';
+import ProviderCard from '../components/ProviderCard';
 import React from 'react';
 import RegionsList from '../components/RegionsList';
 import store from '../redux/store';
@@ -56,6 +57,7 @@ const region: NextPage<{ region: string; citiesInDepartment: string[] }> = ({ re
         <div className='region'>
             {sections}
             <Items />
+            <ProviderCard region={region.slice(0, 2)} />
             <Customers />
             {citiesInDepartment && <RegionsList options={citiesInDepartment} />}
         </div>

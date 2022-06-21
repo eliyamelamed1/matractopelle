@@ -2,6 +2,7 @@ import Customers from '../components/Customers';
 import Info from '../components/Info';
 import Items from '../components/Items';
 import type { NextPage } from 'next';
+import ProviderCard from '../components/ProviderCard';
 import React from 'react';
 import RegionsList from '../components/RegionsList';
 import axios from 'axios';
@@ -11,6 +12,7 @@ const Home: NextPage = () => {
     return (
         <>
             <Info />
+            <ProviderCard />
             <Items />
             <Customers />
             {departmentsList && <RegionsList options={departmentsList} />}
