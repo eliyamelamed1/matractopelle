@@ -18,9 +18,9 @@ const currencies = [
     },
 ];
 
-const ContactForm: React.FC<{ region: string }> = ({ region }) => {
+const ContactForm: React.FC<{ region?: string }> = ({ region }) => {
     const form = useRef();
-
+    const providerEmail = region ? providers[region]?.email : 'company@mail.fr';
     const onSubmit = async (e) => {
         e.preventDefault();
 
@@ -44,7 +44,7 @@ const ContactForm: React.FC<{ region: string }> = ({ region }) => {
                     className='input'
                     variant='standard'
                     size='small'
-                    value={providers[region].email || 'company@mail.fr'}
+                    value={providerEmail}
                     disabled
                 />
                 <TextField label='Nom/Prénom' name='name' className='input' variant='standard' size='small' required />
